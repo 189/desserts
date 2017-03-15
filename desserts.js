@@ -1,5 +1,10 @@
 "use strict"
 
+const slice = Object.prototype.slice;
+
+const encode = encodeURIComponent;
+const decode = decodeURIComponent;
+
 var utils = {
 	/**
 	 * if empty json
@@ -42,6 +47,11 @@ var utils = {
 	            }
 	        }
 	    }
+	},
+
+	type : function(collection){
+		var type = slice.call(collection);
+		return type.match()
 	}
 };
 
