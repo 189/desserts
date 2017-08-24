@@ -14,7 +14,7 @@
 			define(factory);
 		}
 		else {
-			dfine(name, factory);
+			define(name, factory);
 		}
 	}
 	else {
