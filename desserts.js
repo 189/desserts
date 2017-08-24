@@ -25,10 +25,11 @@
 	"use strict"
 
 	var slice = Object.prototype.slice;
+	var toStr = Object.prototype.toString;
 	var encode = encodeURIComponent;
 	var decode = decodeURIComponent;	
 	
-	return {
+	var _ =  {
 		/**
 		 * if empty json
 		 * @param  {object}  json 
@@ -72,11 +73,37 @@
 		    }
 		},
 
-		type : function(collection){
-			var type = slice.call(collection);
-			// return type.match()
-		}		
+		/**
+		 * Get type  
+		 * @param  {mix}  arg 
+		 * @return type     
+		 */
+		type : function(arg){
+			var type = toStr.call(arg);
+			var match = type.match(/\b\w+(?=])/);
+
+			return match[0].toLowerCase();
+		},
+		
+		queryString : function(url){
+			var index, ret = {};
+			
+			url = (url + '').trim();
+			index = url.indexOf('?'); 
+			url = index === -1 ? url.slice(index + 1) : url;
+
+			_.each(url.split('&'), function(item, i){
+				var haystack = item.split('=');
+				if(haystack[0] !== ''){
+					ret[haystack[0]] = haystack[1];
+				}
+			});
+
+			return ret;
+		}
 	};
+
+	return _;
 });
 
 
