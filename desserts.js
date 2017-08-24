@@ -90,7 +90,7 @@
 			
 			url = (url + '').trim();
 			index = url.indexOf('?'); 
-			url = index === -1 ? url.slice(index + 1) : url;
+			url = index > -1 ? url.slice(index + 1) : url;
 
 			_.each(url.split('&'), function(item, i){
 				var haystack = item.split('=');
