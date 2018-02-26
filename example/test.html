@@ -11,7 +11,8 @@
   var source = { a : 2, read : {paper : true, book : false}, count : [1]}
 
   desserts.deepMerge(target, source); // { a : 2, read : {book : false, paper : true}, count : [1] }
-
+  console.log(target.read === source.read); // true
+  // desserts.merge(target, source);
 </script>
 </body>
 </html>
